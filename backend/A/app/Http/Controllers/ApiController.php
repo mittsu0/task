@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Item;
 
 class ApiController extends Controller
 {
@@ -13,7 +14,8 @@ class ApiController extends Controller
      */
     public function index()
     {
-        return ['name' => 'apple'];
+        $items = Item::select('name', 'price')->get();
+        return $items;
     }
 
     /**
@@ -22,8 +24,10 @@ class ApiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Item $item)
     {
-        //
+        $data = $request->only(['name', 'price']);
+        $item->fill($data)->save();
+        return ['message' => 'success'];
     }
 }
