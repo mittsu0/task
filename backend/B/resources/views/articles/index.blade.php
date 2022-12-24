@@ -2,11 +2,14 @@
 
 @section('content')
     <div class="container">
-        @for ($i = 1; $i <= 5; $i++)
-            <div class="">
-                <p class="">あああああああああああああああ</p>
+        <div class="">
+            <h1>投稿一覧</h1>
+        </div>
+        @foreach ($articles as $article)
+            <div class="border-bottom">
+                <p class="">{{ $article->body }}</p>
             </div>
-        @endfor
+        @endforeach
     </div>
 
 
