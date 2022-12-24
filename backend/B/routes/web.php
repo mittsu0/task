@@ -23,3 +23,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', [ArticleController::class, 'index'])->name('articles.index');
+Route::resource('/articles', ArticleController::class)->only(['create', 'store']);
