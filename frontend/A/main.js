@@ -8,7 +8,6 @@ function clickButton() {
     callApi().then(function (json) {
         document.getElementById('sentence').textContent = json.fact;
     })
-    console.log('hello');
 }
 
 document.getElementById('btn').addEventListener('click', clickButton);
