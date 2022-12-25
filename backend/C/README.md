@@ -23,7 +23,7 @@ SELECT genre_id, genres.name, avg(price) as avg FROM items LEFT JOIN genres ON g
 
 - items テーブルと genres テーブルを結合する（items テーブルのレコード数 ×genres テーブルのレコード数）
 - genre_id ごとに price を集計する（items テーブルのレコード数分）
-- 集計したテーブルを genre_id を基準に昇順に並べ替える
+- 集計したテーブルについて、 genre_id を基準に昇順に並べ替える
 
 ## 問 2. id カラム以外はインデックスを貼っていません。もし貼っておいた方が良いインデックスがあれば教えてください。こちらも理由をつけて回答してください
 
