@@ -1,11 +1,11 @@
 <template>
     <div class="form">
-        <input type="text" class="input" v-model="newItem">
+        <input type="text" class="input" v-model="word">
         <button class="btn btn-add" v-on:click="addItem()">追加</button>
     </div>
     <ul class="items">
-        <li v-for="item, index in items" :key=index class="items-list">
-            <button class="btn btn-delete">X</button>
+        <li v-for="item, id in items" :key="id" class="items-list">
+            <button class="btn btn-delete" v-on:click="deleteItem(id)">X</button>
             <p class="item">{{ item }}</p>
         </li>
     </ul>
@@ -15,8 +15,9 @@
 export default {
     data() {
         return {
-            newItem: '',
-            items: []
+            word: '',
+            id: 0,
+            items: {}
         }
     },
     methods: {
@@ -24,8 +25,12 @@ export default {
             if (this.newItem === '') {
                 return;
             }
-            this.items.push(this.newItem);
-            this.newItem = '';
+            this.items[this.id] = this.word
+            this.word = ''
+            this.id++
+        },
+        deleteItem(i) {
+            delete (this.items[i])
         }
     },
     computed: {
