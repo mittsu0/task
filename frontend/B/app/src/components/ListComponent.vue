@@ -1,16 +1,12 @@
 <template>
     <div class="form">
-        <input type="text" class="input" v-model="msg">
-        <button class="btn btn-add">追加</button>
+        <input type="text" class="input" v-model="newItem">
+        <button class="btn btn-add" v-on:click="addItem()">追加</button>
     </div>
     <ul class="items">
-        <li class="items-list">
+        <li v-for="item, index in items" :key=index class="items-list">
             <button class="btn btn-delete">X</button>
-            <p class="item">Apple</p>
-        </li>
-        <li class="items-list">
-            <button class="btn btn-delete">X</button>
-            <p class="item">Apple</p>
+            <p class="item">{{ item }}</p>
         </li>
     </ul>
 </template>
@@ -19,9 +15,18 @@
 export default {
     data() {
         return {
+            newItem: '',
+            items: []
         }
     },
     methods: {
+        addItem() {
+            if (this.newItem === '') {
+                return;
+            }
+            this.items.push(this.newItem);
+            this.newItem = '';
+        }
     },
     computed: {
 
