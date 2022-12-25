@@ -22,7 +22,7 @@ export default {
     },
     methods: {
         addItem() {
-            if (this.newItem === '') {
+            if (this.word === '') {
                 return;
             }
             this.items[this.id] = this.word
