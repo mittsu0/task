@@ -11,4 +11,3 @@ function clickButton() {
 }
 
 document.getElementById('btn').addEventListener('click', clickButton);
-clickButton();
